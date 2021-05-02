@@ -15,6 +15,7 @@
 	<description>Demo fto create a docker image of a springboot app</description>
 	<properties>
 		<java.version>11</java.version>
+		<docker.image.prefix>springboot-app-docker-image</docker.image.prefix>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -31,6 +32,22 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+
+				<configuration>
+					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+					<dockerDirectory>src/main/docker</dockerDirectory>
+					<resources>
+						<resource>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

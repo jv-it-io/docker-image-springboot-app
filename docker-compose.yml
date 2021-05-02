@@ -1,0 +1,6 @@
+version: "3.8" #compose file version
+services:
+  app:
+    image: jvitio-example/docker-image-springboot #Image name
+    ports:
+      - 9090:8081 # Port mapping

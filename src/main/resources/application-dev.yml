@@ -1,0 +1,7 @@
+#logging:
+#  level:
+#    ROOT: INFO
+#spring:
+server:
+  port: 8081
+#application:
